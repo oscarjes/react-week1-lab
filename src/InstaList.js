@@ -1,5 +1,6 @@
 import React from "react";
 import InstaPost from "./InstaPost";
+import logo from "./logo.svg";
 
 export default class InstaList extends React.Component {
   render() {
@@ -9,6 +10,16 @@ export default class InstaList extends React.Component {
         // return <img src={post.image} />;
         return <InstaPost {...post} />;
       });
-    return <div>{posts}</div>;
+    return (
+      <div>
+        <img
+          src={logo}
+          className="App-logo"
+          alt="logo"
+          hidden={!this.props.loading}
+        />
+        {posts}
+      </div>
+    );
   }
 }
