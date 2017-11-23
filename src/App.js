@@ -35,6 +35,33 @@ class App extends Component {
       ]
     };
   }
+  componentWillMount() {
+    const key = 'token';
+    console.log('mounted');
+    const existingToken = sessionStorage.getItem(key);
+    console.log(existingToken);
+    const accessToken = window.location.hash.split("=")[1];
+    console.log(accessToken);
+    const oauthUrl = "https://www.instagram.com/oauth/authorize/?client_id=eb7b0f6c95ea4db7a394e3f109e657c5&redirect_uri=http://localhost:3000&response_type=token"
+  
+    if (!accessToken && !existingToken) {
+      window.location.replace(oauthUrl);
+    }
+    
+    if (accessToken) {
+      console.log(`New access token: ${accessToken}`);
+      sessionStorage.setItem(key, accessToken);
+      this.setState({
+        token: accessToken
+      });
+    }
+
+    if (existingToken) {
+      this.setState({
+        token: existingToken
+      });
+    }
+  };
 
   toggleTitle = () => {
     const newState = this.state.title ? null : "Toggled state";
