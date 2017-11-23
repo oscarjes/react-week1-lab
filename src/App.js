@@ -17,7 +17,7 @@ class App extends Component {
     const accessToken = window.location.hash.split("=")[1];
     console.log(accessToken);
     const oauthUrl =
-      "https://www.instagram.com/oauth/authorize/?client_id=ba2fd66784434418b6f3fd11a53303d6&redirect_uri=http://localhost:3000&response_type=token";
+      "https://www.instagram.com/oauth/authorize/?client_id=eb7b0f6c95ea4db7a394e3f109e657c5&redirect_uri=http://localhost:3000&response_type=token";
 
     if (!accessToken && !existingToken) {
       window.location.replace(oauthUrl);

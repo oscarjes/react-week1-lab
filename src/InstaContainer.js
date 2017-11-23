@@ -26,6 +26,7 @@ export default class InstaContainer extends Component {
         return data.json();
       })
       .then(json => {
+        console.log('json is ', json);
         this.setState({
           posts: json.data,
           loading: false
@@ -33,7 +34,7 @@ export default class InstaContainer extends Component {
       });
   }
   render() {
-    const posts = this.state.posts && this.state.posts;
+    const posts = this.state.posts;
     console.log(posts);
     return <InstaList posts={posts} loading={this.state.loading} />;
   }
